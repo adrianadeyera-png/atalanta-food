@@ -1,0 +1,17 @@
+{
+  "farmName": "Atalanta Food",
+  "companyType": "Agricultural Produce Sales & Commercial Distribution",
+  "tagline": "Fresh Peppers, Vegetables, Tubers & Grains Directly From Source",
+  "whatsappNumber": "2348012345678",
+  "currency": "₦",
+  "contactPhone": "+234 801 234 5678",
+  "contactEmail": "sales@atalanta.ng",
+  "address": "Atalanta Commercial Distribution Hub",
+  "city": "Lagos, Nigeria",
+  "deliveryFee": 2500,
+  "freeDeliveryThreshold": 50000,
+  "pickupLocation": "Atalanta Central Distribution Depot, Depot Bay 4",
+  "hideOutOfStock": true,
+  "adminPassword": "admin",
+  "announcement": "🌱 Bulk Produce Supply Active: Supplying Restaurants, Retailers & Homes with Fresh Farm Harvest!"
+}

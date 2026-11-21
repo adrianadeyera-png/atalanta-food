@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Atalanta Food — Our Farm Story & Field Sourcing</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#080a09',
+              dark: '#111513',
+              card: '#161c18',
+              border: '#1f2a24',
+              green: '#10b981',
+              bright: '#00e676',
+              deep: '#064e3b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css?v=2.1">
+  <link rel="icon" type="image/jpeg" href="/images/atalanta-logo.jpg">
+
+  <style>
+    .about-hero-video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
+      width: 100%; height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.4) saturate(1.1);
+      pointer-events: none;
+    }
+
+    .about-stat-card {
+      background: #111513;
+      border: 1px solid #1f2a24;
+      transition: border-color 0.25s;
+    }
+    .about-stat-card:hover { border-color: #10b981; }
+
+    .timeline-dot {
+      width: 12px; height: 12px;
+      background: #10b981;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+      box-shadow: 0 0 8px rgba(16,185,129,0.6);
+    }
+
+    @media (max-width: 640px) {
+      .about-hero-title { font-size: 2.2rem !important; }
+      .about-section-pad { padding: 3rem 1.25rem !important; }
+    }
+  </style>
+</head>
+<body class="bg-[#080a09] text-slate-100 flex flex-col min-h-screen">
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-[#080a09]/95 backdrop-blur-md border-b border-emerald-950/80 shadow-lg">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <a href="/" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+        <div style="width:42px;height:42px;min-width:42px;max-width:42px;min-height:42px;max-height:42px;overflow:hidden;border-radius:10px;border:2px solid #10b981;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="/images/atalanta-logo.jpg" alt="Atalanta Food" style="width:42px;height:42px;max-width:42px;max-height:42px;object-fit:cover;border-radius:8px;display:block;" onerror="this.style.display='none';" />
+        </div>
+        <div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1 font-serif-farm">
+            Atalanta <span class="text-emerald-400 font-sans text-[10px] sm:text-xs font-extrabold uppercase px-1 py-0.5 rounded-md bg-emerald-950 border border-emerald-700/60">Food</span>
+          </span>
+          <span class="hidden sm:block text-[10px] font-bold text-emerald-400 tracking-wider uppercase">Produce Sales & Supply</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="/#catalogue" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-black hover:bg-emerald-950 text-emerald-400 border border-emerald-700 font-bold text-xs transition">
+          🛒 Shop Produce
+        </a>
+        <a href="/#wholesale" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs transition">
+          🏢 Wholesale
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT HERO (video background) -->
+  <section class="relative overflow-hidden flex items-end" style="min-height: min(70vh, 500px);">
+    <div class="absolute inset-0 overflow-hidden">
+      <video class="about-hero-video" autoplay muted playsinline preload="auto" loop>
+        <source src="/videos/farm-video-1.mp4" type="video/mp4">
+      </video>
+      <!-- Overlay -->
+      <div class="absolute inset-0" style="background: linear-gradient(to top, #080a09 10%, rgba(8,10,9,0.7) 55%, rgba(0,0,0,0.3) 100%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pb-16 pt-24 w-full">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-emerald-500 text-emerald-300 text-xs font-bold mb-5 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Our Story
+      </div>
+      <h1 class="about-hero-title font-black font-serif-farm text-white leading-tight" style="font-size: clamp(2.2rem, 6vw, 4rem);">
+        ATÁ LÁN TA.<br>
+        <span class="text-emerald-400">It is pepper we sell.</span>
+      </h1>
+      <p class="mt-4 text-slate-300 max-w-xl text-sm sm:text-base leading-relaxed">
+        A Yoruba declaration turned into a mission — Atalanta Food bridges Nigeria's most fertile farmlands directly to tables and businesses across the country.
+      </p>
+    </div>
+  </section>
+
+  <!-- BRAND STORY SECTION -->
+  <section class="about-section-pad max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      
+      <!-- Story Text -->
+      <div>
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Who We Are</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-serif-farm mt-2 leading-snug">
+          From the Field to Your Kitchen — with Zero Compromise
+        </h2>
+        <div class="mt-5 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            Atalanta Food is a Lagos-based agricultural produce sales and distribution company built on one principle: <strong class="text-white">fresh produce should go from farm to customer as fast as possible</strong>, with no needless middlemen inflating cost or degrading quality.
+          </p>
+          <p>
+            Our name, <em class="text-emerald-400 font-semibold">Atá lán ta</em>, is Yoruba for <em>"It is pepper we sell"</em> — a proud declaration of origin. While pepper was where we started, Atalanta today sources over eleven premium Nigerian produce lines: habanero peppers, bell peppers, fresh ugu leaves, Jos plum tomatoes, Benue white yam tubers, golden sweet corn, crisp cucumbers, tender okra, soursop, and buttery avocados.
+          </p>
+          <p>
+            Whether you're a household stocking your kitchen or a hotel, restaurant, or catering operation needing reliable commercial volumes — Atalanta is your single point of contact for verified, inspected, farm-fresh Nigerian produce.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="mt-8 space-y-5">
+          <h3 class="text-sm font-black text-emerald-400 uppercase tracking-widest">How It Works</h3>
+          <div class="flex gap-4">
+            <div class="timeline-dot mt-1"></div>
+            <div>
+              <h4 class="font-bold text-white text-sm">Farm Partnership & Sourcing</h4>
+              <p class="text-xs text-slate-400 mt-0.5">We work directly with Nigerian farm cooperatives and smallholder farms across Benue, Jos, and the South-West agricultural belt to source produce at peak freshness.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="timeline-dot mt-1"></div>
+            <div>
+              <h4 class="font-bold text-white text-sm">Field Inspection & Grading</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Every batch is physically inspected before packaging. We grade by size, ripeness, and quality — rejecting anything that doesn't meet our commercial standards.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="timeline-dot mt-1"></div>
+            <div>
+              <h4 class="font-bold text-white text-sm">Rapid Dispatch to Your Door</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Same-day or next-morning dispatch for retail and commercial orders. WhatsApp-driven ordering means no delays — just fast, fresh delivery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats + Values -->
+      <div class="space-y-5">
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="about-stat-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-black text-emerald-400">11+</div>
+            <div class="text-xs text-slate-400 mt-1 font-semibold uppercase tracking-wider">Produce Lines</div>
+          </div>
+          <div class="about-stat-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-black text-emerald-400">3</div>
+            <div class="text-xs text-slate-400 mt-1 font-semibold uppercase tracking-wider">Farm Regions</div>
+          </div>
+          <div class="about-stat-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-black text-emerald-400">0</div>
+            <div class="text-xs text-slate-400 mt-1 font-semibold uppercase tracking-wider">Middlemen</div>
+          </div>
+          <div class="about-stat-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-black text-emerald-400">24h</div>
+            <div class="text-xs text-slate-400 mt-1 font-semibold uppercase tracking-wider">Dispatch Target</div>
+          </div>
+        </div>
+
+        <!-- Values Card -->
+        <div class="bg-[#111513] border border-emerald-900/60 rounded-3xl p-6">
+          <h3 class="text-sm font-black text-emerald-400 uppercase tracking-widest mb-4">What We Stand For</h3>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-3">
+              <span class="text-lg mt-0.5">🌱</span>
+              <span><strong class="text-white">Farm-first quality.</strong> We buy from farmers we trust and inspect every delivery before it leaves the source.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-lg mt-0.5">🤝</span>
+              <span><strong class="text-white">Honest pricing.</strong> No inflated retail markups — wholesale buyers and households get competitive, transparent rates.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-lg mt-0.5">⚡</span>
+              <span><strong class="text-white">Speed over complexity.</strong> Order on WhatsApp, receive quickly. No bureaucratic procurement — fast, human, and direct.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-lg mt-0.5">🇳🇬</span>
+              <span><strong class="text-white">Nigerian roots.</strong> Built to celebrate and distribute the richness of Nigerian agriculture to Nigerians — and beyond.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD VIDEO SECTION -->
+  <section class="bg-black border-t border-[#1f2a24] py-14 px-5 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Authentic Field Evidence</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-serif-farm mt-2">
+          Our Farms — Straight From the Source
+        </h2>
+        <p class="text-slate-400 text-sm mt-2 max-w-xl leading-relaxed">
+          These clips were shot directly at the farms we partner with. No stock footage — these are our actual crops and operations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        
+        <!-- Video 1 -->
+        <div class="bg-[#111513] rounded-3xl overflow-hidden border border-[#1f2a24] hover:border-emerald-500 transition shadow-xl flex flex-col">
+          <div class="relative bg-black overflow-hidden" style="aspect-ratio: 16/9;">
+            <video 
+              controls 
+              muted
+              playsinline 
+              preload="metadata" 
+              class="w-full h-full object-cover"
+            >
+              <source src="/videos/farm-video-1.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-emerald-400 border border-emerald-600/50 pointer-events-none">
+              🌱 Clip 1 — Field & Cultivation
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white font-serif-farm">Organic Soil & Crop Care</h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                Rich loamy soil, careful spacing, no synthetic shortcuts. This is how Atalanta produce earns its quality: through farms that invest in soil health and sustainable agriculture.
+              </p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[#1f2a24] flex items-center justify-between text-xs text-slate-400">
+              <span>📍 Nigerian Agricultural Belt</span>
+              <span class="text-emerald-400 font-bold">100% Inspected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="bg-[#111513] rounded-3xl overflow-hidden border border-[#1f2a24] hover:border-emerald-500 transition shadow-xl flex flex-col">
+          <div class="relative bg-black overflow-hidden" style="aspect-ratio: 16/9;">
+            <video 
+              controls 
+              muted
+              playsinline 
+              preload="metadata" 
+              class="w-full h-full object-cover"
+            >
+              <source src="/videos/farm-video-2.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-emerald-400 border border-emerald-600/50 pointer-events-none">
+              🌾 Clip 2 — Harvest & Sorting
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white font-serif-farm">Fresh Harvest & Commercial Readiness</h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                Hand-picked at dawn. Sorted by grade. Packed for transit. From the moment of harvest, Atalanta's supply chain prioritizes freshness over convenience — so what reaches you is at peak condition.
+              </p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[#1f2a24] flex items-center justify-between text-xs text-slate-400">
+              <span>🚚 Same-Day Dispatch</span>
+              <span class="text-emerald-400 font-bold">Commercial Grade</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCE CATEGORIES SECTION -->
+  <section class="py-14 px-5 sm:px-8 border-t border-[#1f2a24]">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">What We Sell</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-serif-farm mt-2">Our Produce Range</h2>
+        <p class="text-slate-400 text-sm mt-2 max-w-xl">Eleven lines of authentic Nigerian farm produce — available for retail and commercial wholesale.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        
+        <!-- Produce items -->
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/habanero-peppers.jpg" alt="Habanero Pepper" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🌶️</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Pepper</div>
+            <div class="text-sm font-bold text-white mt-0.5">Habanero (Ata Rodo)</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/bell-peppers.jpg" alt="Bell Peppers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🫑</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Pepper</div>
+            <div class="text-sm font-bold text-white mt-0.5">Bell Pepper (Tatashe)</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/fresh-tomatoes.jpg" alt="Plum Tomatoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🍅</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Vegetable</div>
+            <div class="text-sm font-bold text-white mt-0.5">Jos Plum Tomatoes</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/ugu-leaves.png" alt="Ugu Leaves" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🥬</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Vegetable</div>
+            <div class="text-sm font-bold text-white mt-0.5">Ugu Leaves (Pumpkin)</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/cucumbers.jpg" alt="Cucumbers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🥒</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Vegetable</div>
+            <div class="text-sm font-bold text-white mt-0.5">Crisp Cucumbers</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/okra.jpg" alt="Okra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🌿</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Vegetable</div>
+            <div class="text-sm font-bold text-white mt-0.5">Tender Okra</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/yam.png" alt="White Yam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🍠</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Tubers</div>
+            <div class="text-sm font-bold text-white mt-0.5">Benue White Yam</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/sweet-corn.jpg" alt="Sweet Corn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🌽</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Grains</div>
+            <div class="text-sm font-bold text-white mt-0.5">Golden Sweet Corn</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/soursop.png" alt="Soursop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🍈</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Fruits</div>
+            <div class="text-sm font-bold text-white mt-0.5">Organic Soursop</div>
+          </div>
+        </div>
+
+        <div class="bg-[#111513] border border-[#1f2a24] hover:border-emerald-500 rounded-2xl overflow-hidden transition group">
+          <div class="h-36 overflow-hidden bg-black">
+            <img src="/images/avocado.jpg" alt="Avocado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\'>🥑</div>'">
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Fruits</div>
+            <div class="text-sm font-bold text-white mt-0.5">Fresh Avocados</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA row -->
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center text-center">
+        <a href="/#catalogue" class="px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm sm:text-base shadow-xl transition active:scale-95">
+          Browse Full Catalogue & Order 🛒
+        </a>
+        <a href="/#wholesale" class="px-7 py-4 rounded-2xl bg-black border border-emerald-500 text-emerald-400 hover:text-white font-bold text-sm sm:text-base transition">
+          Wholesale / Bulk Inquiry 🏢
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black border-t border-[#1f2a24] py-10 px-5 sm:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-400">
+      <div class="flex items-center gap-3">
+        <div style="width:36px;height:36px;min-width:36px;border-radius:10px;overflow:hidden;border:2px solid #10b981;background:#000;display:flex;align-items:center;justify-content:center;">
+          <img src="/images/atalanta-logo.jpg" alt="Atalanta" style="width:36px;height:36px;object-fit:cover;" onerror="this.style.display='none';">
+        </div>
+        <div>
+          <span class="text-white font-black font-serif-farm">Atalanta <span class="text-emerald-400 font-sans text-xs uppercase font-extrabold px-1 py-0.5 rounded bg-emerald-950 border border-emerald-700/60">Food</span></span>
+          <div class="text-xs text-emerald-400 font-bold">Produce Sales & Commercial Distribution</div>
+        </div>
+      </div>
+      <div class="flex gap-5 text-xs">
+        <a href="/" class="hover:text-emerald-400 transition">Home</a>
+        <a href="/#catalogue" class="hover:text-emerald-400 transition">Catalogue</a>
+        <a href="/#wholesale" class="hover:text-emerald-400 transition">Wholesale</a>
+        <a href="/about.html" class="text-emerald-400 font-bold">About</a>
+      </div>
+      <p class="text-xs">&copy; 2026 Atalanta Food. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

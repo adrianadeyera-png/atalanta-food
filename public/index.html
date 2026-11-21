@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atalanta | Produce Sales & Wholesale Agricultural Supply</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#080a09',
+              dark: '#111513',
+              card: '#161c18',
+              border: '#1f2a24',
+              green: '#10b981',
+              bright: '#00e676',
+              deep: '#064e3b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="icon" type="image/jpeg" href="images/atalanta-logo.jpg">
+</head>
+<body class="bg-[#080a09] text-slate-100 flex flex-col min-h-screen">
+
+  <!-- 1. TOP ANNOUNCEMENT BAR (GREEN & BLACK) -->
+  <div class="bg-black text-emerald-300 text-xs sm:text-sm py-2 px-4 font-bold border-b border-emerald-950">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2 overflow-hidden truncate">
+        <span class="inline-block animate-pulse text-emerald-400">✨</span>
+        <span id="announcement-banner" class="truncate">🌱 Bulk & Retail Produce Supply: Sourcing Fresh Ugu Leaves, Ata Rodo, Benue Yams & Sweet Corn!</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-xs font-semibold">
+        <a href="#wholesale" class="text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
+          <span>🏢 Wholesale B2B Desk</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN NAVIGATION (BLACK & GREEN) -->
+  <header class="sticky top-0 z-40 bg-[#080a09]/95 backdrop-blur-md border-b border-emerald-950/80 shadow-lg">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Brand Logo & Name -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+        <div class="navbar-logo-box" style="width: 42px !important; height: 42px !important; min-width: 42px !important; max-width: 42px !important; min-height: 42px !important; max-height: 42px !important; overflow: hidden !important; border-radius: 10px; border: 2px solid #10b981; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <img 
+            src="images/atalanta-logo.jpg" 
+            alt="Atalanta Food" 
+            class="navbar-logo-img"
+            style="width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; object-fit: cover !important; border-radius: 8px; display: block;"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div style="display:none" class="w-full h-full items-center justify-center text-xl text-emerald-400">🌾</div>
+        </div>
+        <div>
+          <span class="navbar-brand-name text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1 sm:gap-1.5 font-serif-farm">
+            Atalanta <span class="text-emerald-400 font-sans text-[10px] sm:text-xs font-extrabold uppercase px-1 py-0.5 rounded-md bg-emerald-950 border border-emerald-700/60">Food</span>
+          </span>
+          <span class="navbar-brand-sub hidden sm:block text-[10px] font-bold text-emerald-400 tracking-wider uppercase">Produce Sales & Supply</span>
+        </div>
+      </a>
+
+      <!-- Quick Search Bar (Desktop only) -->
+      <div class="hidden lg:flex flex-1 max-w-sm mx-4">
+        <div class="relative w-full">
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search peppers, ugu leaves, yam..." 
+            class="w-full bg-[#111513] border border-[#1f2a24] text-white placeholder-slate-500 rounded-2xl pl-9 pr-4 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:bg-black transition"
+          />
+          <svg class="w-4 h-4 text-emerald-500 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Header Action Buttons -->
+      <div class="flex items-center gap-2">
+        <!-- About Us (desktop) -->
+        <a 
+          href="about.html" 
+          class="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-transparent hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 font-bold text-xs transition"
+        >
+          About Us
+        </a>
+
+        <!-- Wholesale Link -->
+        <a 
+          href="#wholesale" 
+          class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-black hover:bg-emerald-950 text-emerald-400 border border-emerald-600 font-bold text-xs transition"
+        >
+          🏢 Wholesale
+        </a>
+
+        <!-- Basket Button -->
+        <button 
+          id="nav-cart-btn" 
+          onclick="openCart()" 
+          class="relative flex items-center gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm shadow-lg shadow-emerald-500/20 transition active:scale-95 cursor-pointer"
+        >
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="hidden sm:inline text-sm">Basket</span>
+          <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-black text-emerald-400 text-xs font-black flex items-center justify-center border-2 border-emerald-400 shadow-xs">
+            0
+          </span>
+        </button>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- 3. HERO SECTION WITH BACKGROUND VIDEO -->
+  <section class="hero-section-container relative text-white flex items-center overflow-hidden" style="min-height: min(90vh, 640px);">
+    
+    <!-- Video Background Container -->
+    <div class="hero-video-container">
+      <video 
+        id="hero-bg-video-1" 
+        class="hero-video-element" 
+        autoplay 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="videos/farm-video-1.mp4" type="video/mp4">
+      </video>
+
+      <video 
+        id="hero-bg-video-2" 
+        class="hero-video-element" 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="videos/farm-video-2.mp4" type="video/mp4">
+      </video>
+
+      <!-- Gradient Overlay -->
+      <div class="hero-video-overlay"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="max-w-7xl mx-auto relative z-10 w-full px-5 sm:px-8 lg:px-10 py-14 sm:py-20">
+      <div class="max-w-2xl">
+        
+        <!-- Company Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-emerald-500 text-emerald-300 text-xs font-bold mb-5 backdrop-blur-md shadow-md">
+          <img src="images/atalanta-logo.jpg" alt="Logo" class="pill-logo-img">
+          <span>Atalanta Food · Direct Farm Produce</span>
+        </div>
+
+        <h1 class="hero-heading-responsive font-black font-serif-farm tracking-tight leading-tight text-white drop-shadow-md">
+          Fresh <span class="text-emerald-400">Farm Produce</span> — Direct to You.
+        </h1>
+
+        <p class="hero-subtext-responsive mt-4 text-slate-200 leading-relaxed font-normal drop-shadow-xs max-w-xl">
+          Habanero peppers, bell peppers, ugu leaves, Jos tomatoes, Benue yams, sweet corn, soursop & avocados — sourced fresh, delivered fast.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-cta-group mt-7 flex flex-wrap items-center gap-3">
+          <a href="#catalogue" class="px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition active:scale-95 flex items-center gap-2 cursor-pointer">
+            Shop Produce ↓
+          </a>
+
+          <a href="#wholesale" class="px-5 py-3.5 rounded-2xl bg-black/70 hover:bg-black border border-emerald-500 text-emerald-400 font-bold text-sm sm:text-base backdrop-blur-md transition flex items-center gap-2 cursor-pointer">
+            🏢 Wholesale / Bulk
+          </a>
+
+          <a href="about.html" class="px-5 py-3.5 rounded-2xl bg-transparent hover:bg-white/10 border border-white/30 text-white font-semibold text-sm transition cursor-pointer">
+            Our Farm Story
+          </a>
+        </div>
+
+        <!-- Trust Strip -->
+        <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 pt-6 border-t border-white/10">
+          <span class="flex items-center gap-1.5 text-xs text-slate-300"><span>🌱</span> Direct Sourcing</span>
+          <span class="flex items-center gap-1.5 text-xs text-slate-300"><span>⚡</span> WhatsApp Orders</span>
+          <span class="flex items-center gap-1.5 text-xs text-slate-300"><span>🏢</span> B2B Wholesale</span>
+          <span class="flex items-center gap-1.5 text-xs text-slate-300"><span>🚚</span> Same-Day Dispatch</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 4. PRODUCE CATALOGUE SECTION -->
+  <main id="catalogue" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex-1 w-full">
+    
+    <!-- Section Header & Controls -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#1f2a24]">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-widest">
+          <span>🌾 Atalanta Sales Inventory</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 font-serif-farm">
+          Available Farm Produce
+        </h2>
+        <p class="text-slate-400 text-sm mt-1">Retail baskets for households & direct bulk supply for catering businesses. Prices updated regularly.</p>
+      </div>
+
+      <!-- Filters & Sorting bar -->
+      <div class="flex flex-wrap items-center gap-4">
+        <!-- Sort Select -->
+        <div class="relative">
+          <select id="sort-select" class="appearance-none bg-[#111513] border border-[#1f2a24] rounded-2xl px-4 py-2.5 pr-9 text-sm font-semibold text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+            <option value="featured">Featured Produce</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Alphabetical (A-Z)</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-emerald-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Pills Navigation -->
+    <div class="mt-6 flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar">
+      <button data-cat="all" class="cat-pill-btn active px-5 py-2.5 rounded-full text-sm font-black bg-emerald-500 text-black border border-emerald-400 shadow-md flex items-center gap-2 transition cursor-pointer">
+        <span>🌱 All Harvest</span>
+        <span id="count-all" class="px-2 py-0.5 rounded-full bg-black text-emerald-400 text-xs font-bold">10</span>
+      </button>
+
+      <button data-cat="peppers" class="cat-pill-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-[#121614] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 border border-[#1e2a22] flex items-center gap-2 transition cursor-pointer">
+        <span>🌶️ Peppers</span>
+        <span id="count-peppers" class="px-2 py-0.5 rounded-full bg-black text-slate-400 text-xs">2</span>
+      </button>
+
+      <button data-cat="vegetables" class="cat-pill-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-[#121614] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 border border-[#1e2a22] flex items-center gap-2 transition cursor-pointer">
+        <span>🥬 Vegetables</span>
+        <span id="count-vegetables" class="px-2 py-0.5 rounded-full bg-black text-slate-400 text-xs">4</span>
+      </button>
+
+      <button data-cat="tubers" class="cat-pill-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-[#121614] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 border border-[#1e2a22] flex items-center gap-2 transition cursor-pointer">
+        <span>🍠 Tubers</span>
+        <span id="count-tubers" class="px-2 py-0.5 rounded-full bg-black text-slate-400 text-xs">1</span>
+      </button>
+
+      <button data-cat="grains" class="cat-pill-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-[#121614] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 border border-[#1e2a22] flex items-center gap-2 transition cursor-pointer">
+        <span>🌽 Grains</span>
+        <span id="count-grains" class="px-2 py-0.5 rounded-full bg-black text-slate-400 text-xs">1</span>
+      </button>
+
+      <button data-cat="fruits" class="cat-pill-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-[#121614] text-slate-300 hover:text-emerald-400 hover:border-emerald-500 border border-[#1e2a22] flex items-center gap-2 transition cursor-pointer">
+        <span>🥑 Fruits</span>
+        <span id="count-fruits" class="px-2 py-0.5 rounded-full bg-black text-slate-400 text-xs">2</span>
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="products-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Populated dynamically via app.js -->
+    </div>
+
+  </main>
+
+  <!-- 6. DEDICATED WHOLESALE & BULK SUPPLY FORM -->
+  <section id="wholesale" class="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white relative border-t border-[#1f2a24]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950 border border-emerald-500 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+          <span>🏢 Atalanta B2B Commercial Desk</span>
+        </div>
+        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-black font-serif-farm text-white">
+          Commercial Wholesale & Bulk Orders
+        </h3>
+        <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+          Are you a restaurant owner, catering service, hotel chef, supermarket buyer, or food processor? Submit your required produce and volume below. The form compiles a structured B2B Request for Quotation and routes directly to Atalanta's WhatsApp sales desk.
+        </p>
+      </div>
+
+      <!-- Wholesale Form Card (Dark & Green Theme) -->
+      <div class="bg-[#111513] text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-900/60">
+        
+        <form id="wholesale-inquiry-form" class="space-y-6">
+          
+          <!-- Buyer Information -->
+          <div>
+            <h4 class="text-sm font-black text-emerald-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span>1.</span> Business & Contact Information
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Business / Company Name *
+                </label>
+                <input 
+                  type="text" 
+                  name="company_name" 
+                  required 
+                  placeholder="e.g. Bukka Hut, Grand Continental Hotel, Prime Caterers" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Contact Person Full Name *
+                </label>
+                <input 
+                  type="text" 
+                  name="contact_name" 
+                  required 
+                  placeholder="e.g. Chief Adeleke / Mrs. Ngozi" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  WhatsApp Phone Number *
+                </label>
+                <input 
+                  type="tel" 
+                  name="wholesale_phone" 
+                  required 
+                  placeholder="e.g. 08012345678 or +234..." 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Business Category
+                </label>
+                <select 
+                  name="buyer_type" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm font-semibold focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden cursor-pointer"
+                >
+                  <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                  <option value="Hotel / Hospitality">Hotel / Hospitality</option>
+                  <option value="Event Catering Service">Event Catering Service</option>
+                  <option value="Supermarket / Produce Retailer">Supermarket / Produce Retailer</option>
+                  <option value="Food Processing / Manufacturing">Food Processing / Manufacturing</option>
+                  <option value="Exporter / Commodity Trader">Exporter / Commodity Trader</option>
+                  <option value="Large Household / Cooperative">Large Household / Cooperative</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Produce Selection Checkboxes -->
+          <div class="pt-2">
+            <h4 class="text-sm font-black text-emerald-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span>2.</span> Select Produce Required in Bulk
+            </h4>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+              
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Habanero Pepper (Ata Rodo)" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🌶️ Ata Rodo / Habanero
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Fresh Bell Peppers (Tatashe)" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🫑 Bell Peppers (Tatashe)
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Fresh Ugu Leaves (Fluted Pumpkin)" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🥬 Fresh Ugu Leaves
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Plum Tomatoes (Crates)" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🍅 Plum Tomatoes
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Benue White Yam Tubers" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🍠 Benue White Yams
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Golden Sweet Corn" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🌽 Golden Sweet Corn
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Crisp Cucumbers" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🥒 Crisp Cucumbers
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Tender Okra" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🌿 Tender Green Okra
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Fresh Soursop (Graviola)" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🍈 Organic Soursop
+                </span>
+              </label>
+
+              <label class="checkbox-pill cursor-pointer">
+                <input type="checkbox" name="bulk_produce" value="Buttery Avocados" class="hidden">
+                <span class="block px-3 py-2 rounded-xl border border-[#1f2a24] bg-black text-xs font-semibold text-slate-300 text-center hover:border-emerald-500 transition">
+                  🥑 Fresh Avocados
+                </span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Volume & Location -->
+          <div class="pt-2">
+            <h4 class="text-sm font-black text-emerald-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span>3.</span> Quantities, Frequency & Delivery Location
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Estimated Quantity / Volume *
+                </label>
+                <input 
+                  type="text" 
+                  name="volume_estimate" 
+                  required 
+                  placeholder="e.g. 20 crates, 100 tubers, 50 bags" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Supply Frequency
+                </label>
+                <select 
+                  name="supply_frequency" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm font-semibold focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden cursor-pointer"
+                >
+                  <option value="Weekly Standing Order">Weekly Scheduled Delivery</option>
+                  <option value="Bi-Weekly Supply">Bi-Weekly Supply</option>
+                  <option value="One-Off Bulk Order">One-Off Event / Bulk Purchase</option>
+                  <option value="Monthly Contract Supply">Monthly Commercial Contract</option>
+                  <option value="Daily Dispatch">Daily Fresh Dispatch</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Delivery Destination / City
+                </label>
+                <input 
+                  type="text" 
+                  name="delivery_city" 
+                  placeholder="e.g. Victoria Island, Ikeja, Abuja, Ibadan" 
+                  class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Special Specifications / Packaging Notes (Optional)
+              </label>
+              <textarea 
+                name="wholesale_notes" 
+                rows="2" 
+                placeholder="e.g. Require Grade A sorting, dispatch on Tuesday mornings before 7:30 AM..." 
+                class="w-full bg-black border border-[#1f2a24] text-white rounded-xl p-3 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button 
+              type="submit" 
+              class="w-full py-4 rounded-2xl whatsapp-btn text-white font-black text-base shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
+            >
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.196 8.196 0 01-5.82 2.42c-1.47 0-2.91-.39-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.188 8.188 0 01-1.26-4.4c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+              </svg>
+              <span>Submit Wholesale Inquiry to Atalanta via WhatsApp</span>
+            </button>
+            <p class="text-xs text-slate-400 text-center mt-2.5">
+              Direct connection with Atalanta's commercial sales representative for customized wholesale discounts & delivery scheduling.
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. FOOTER (BLACK & GREEN) -->
+  <footer class="bg-black text-slate-300 pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1f2a24]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#1f2a24]">
+      
+      <!-- Brand column -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3.5 mb-4">
+          <div class="footer-logo-box">
+            <img src="images/atalanta-logo.jpg" alt="Atalanta Food" class="footer-logo-img"/>
+          </div>
+          <div>
+            <span class="text-2xl font-black text-white font-serif-farm leading-tight">Atalanta <span class="text-emerald-400 font-sans text-xs uppercase font-extrabold px-1.5 py-0.5 rounded-md bg-emerald-950 border border-emerald-700/60">Food</span></span>
+            <span class="block text-xs font-bold text-emerald-400">Produce Sales & Commercial Distribution</span>
+          </div>
+        </div>
+        <p class="text-sm text-slate-400 max-w-sm leading-relaxed mb-6">
+          Supplying hotels, caterers, food processors, supermarkets, and households with authentic Nigerian farm produce. Sourced at peak freshness directly from fertile soils.
+        </p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111513] text-emerald-400 font-bold border border-emerald-900">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sales Desk Live
+          </span>
+          <span>B2B & Retail Distribution</span>
+        </div>
+      </div>
+
+      <!-- Quick Categories -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Produce Sourcing</h4>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#catalogue" onclick="state.currentCategory='peppers'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Habanero & Bell Peppers</a></li>
+          <li><a href="#catalogue" onclick="state.currentCategory='vegetables'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Fresh Ugu Leaves (Pumpkin)</a></li>
+          <li><a href="#catalogue" onclick="state.currentCategory='vegetables'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Plum Tomatoes & Okra</a></li>
+          <li><a href="#catalogue" onclick="state.currentCategory='tubers'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Benue White Yam Tubers</a></li>
+          <li><a href="#catalogue" onclick="state.currentCategory='grains'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Fresh Golden Sweet Corn</a></li>
+          <li><a href="#catalogue" onclick="state.currentCategory='fruits'; updateActiveCategoryTab(); renderProducts();" class="hover:text-emerald-400 transition">Soursop & Butter Avocados</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Hub Location -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Sales Operations</h4>
+        <div class="space-y-3 text-sm text-slate-400">
+          <p class="flex items-start gap-2">
+            <span>📍</span>
+            <span class="farm-address-text">Atalanta Commercial Distribution Hub, Lagos, Nigeria</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <span>📞</span>
+            <span class="farm-phone-text">+234 801 234 5678</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <span>✉️</span>
+            <span class="farm-email-text">sales@atalanta.ng</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+      <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Atalanta Food. All rights reserved. Commercial agricultural sales & supply.</p>
+        <div class="flex items-center gap-4">
+          <a href="about.html" class="text-emerald-400 hover:underline transition">About Us</a>
+          <a href="#wholesale" class="text-emerald-400 hover:underline transition">Wholesale Inquiry</a>
+        </div>
+      </div>
+  </footer>
+
+  <!-- 8. FLOATING BASKET BUTTON -->
+  <div class="fixed bottom-6 right-6 z-30">
+    <button 
+      id="cart-floating-btn" 
+      onclick="openCart()" 
+      class="flex items-center gap-3 px-6 py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm shadow-2xl shadow-emerald-500/40 border-2 border-black transition active:scale-95 group cursor-pointer"
+    >
+      <div class="relative">
+        <svg class="w-6 h-6 text-black group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+        </svg>
+        <span class="cart-count-badge hidden absolute -top-2 -right-2 w-5 h-5 rounded-full bg-black text-emerald-400 text-[10px] font-black flex items-center justify-center border border-emerald-400">
+          0
+        </span>
+      </div>
+      <span>View Basket</span>
+    </button>
+  </div>
+
+  <!-- 9. SLIDE-OVER BASKET DRAWER (BLACK & GREEN) -->
+  <div id="cart-backdrop" onclick="closeCart()" class="fixed inset-0 bg-black/80 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#0e1210] border-l border-[#1f2a24] z-50 shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-out text-white">
+    
+    <div class="p-6 border-b border-[#1f2a24] flex items-center justify-between bg-black text-white">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🧺</span>
+        <h3 class="text-lg font-bold">Your Produce Basket</h3>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="clearCart()" class="text-xs text-slate-400 hover:text-emerald-400 underline mr-2 cursor-pointer">Clear</button>
+        <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-[#1b221e] hover:bg-emerald-900 text-white flex items-center justify-center transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-black px-6 py-3 border-b border-[#1f2a24]">
+      <div id="delivery-progress-text" class="text-xs text-emerald-400 font-bold mb-1.5">
+        Add more items to unlock free delivery
+      </div>
+      <div class="w-full h-2 rounded-full bg-[#1b221e] overflow-hidden">
+        <div id="delivery-progress-fill" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="px-6 py-3 bg-[#111513] border-b border-[#1f2a24] flex items-center gap-2">
+      <span class="text-xs font-bold text-slate-400 uppercase">Fulfillment:</span>
+      <button id="method-delivery-btn" class="flex-1 py-1.5 px-3 rounded-xl border border-emerald-500 bg-emerald-950 text-emerald-300 text-xs font-bold transition cursor-pointer">
+        🚚 Delivery
+      </button>
+      <button id="method-pickup-btn" class="flex-1 py-1.5 px-3 rounded-xl border border-[#1f2a24] bg-black text-slate-300 text-xs font-bold transition cursor-pointer">
+        🏪 Depot Pickup (Free)
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 space-y-4">
+      <div id="cart-empty-state" class="text-center py-16">
+        <div class="w-16 h-16 mx-auto bg-black rounded-full flex items-center justify-center text-3xl mb-3 text-emerald-500">
+          🌾
+        </div>
+        <h4 class="font-bold text-white text-base">Your basket is empty</h4>
+        <p class="text-xs text-slate-400 mt-1 max-w-xs mx-auto">Explore today's catalogue and add fresh peppers, ugu leaves, yam or fruits!</p>
+        <button onclick="closeCart()" class="mt-6 px-6 py-2.5 rounded-xl bg-emerald-500 text-black font-black text-xs cursor-pointer">
+          Browse Produce
+        </button>
+      </div>
+
+      <div id="cart-items-list" class="space-y-3">
+        <!-- Rendered via app.js -->
+      </div>
+    </div>
+
+    <div id="cart-footer" class="p-6 border-t border-[#1f2a24] bg-black space-y-3 hidden">
+      <div class="flex justify-between text-sm text-slate-300">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-val" class="font-bold text-white">₦0</span>
+      </div>
+      <div class="flex justify-between text-sm text-slate-300">
+        <span>Delivery:</span>
+        <span id="cart-delivery-val" class="font-bold text-white">₦2,500</span>
+      </div>
+      <div class="pt-2 border-t border-[#1f2a24] flex justify-between text-base font-black text-white">
+        <span>Estimated Total:</span>
+        <span id="cart-total-val" class="text-emerald-400 text-xl font-black">₦0</span>
+      </div>
+
+      <button 
+        onclick="openCheckoutModal()" 
+        class="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-base shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer"
+      >
+        <span>Proceed to WhatsApp Checkout 📲</span>
+      </button>
+      
+      <div class="pt-1 text-center">
+        <a href="#wholesale" onclick="closeCart()" class="text-xs text-emerald-400 hover:underline font-bold">
+          Ordering in Bulk? Use our Wholesale B2B Form →
+        </a>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- 10. PRODUCT DETAIL MODAL (BLACK & GREEN) -->
+  <div id="product-detail-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 modal-backdrop">
+    <div class="bg-[#111513] text-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col border border-[#1f2a24]">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition cursor-pointer">
+        ✕
+      </button>
+
+      <div class="overflow-y-auto">
+        <div class="relative h-64 sm:h-80 w-full bg-black">
+          <img id="modal-img" src="" alt="Produce" class="w-full h-full object-cover"/>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center justify-between text-xs font-bold text-emerald-400 tracking-wider mb-2">
+            <span id="modal-category">CATEGORY</span>
+            <span id="modal-season" class="text-slate-400 font-normal">Direct Sourcing</span>
+          </div>
+
+          <h3 id="modal-title" class="text-2xl sm:text-3xl font-extrabold text-white font-serif-farm">Produce Name</h3>
+
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="modal-price" class="text-3xl font-black text-emerald-400">₦0</span>
+            <span id="modal-unit" class="text-sm font-medium text-slate-400">per unit</span>
+          </div>
+
+          <p id="modal-description" class="mt-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+            Detailed description of the produce.
+          </p>
+
+          <div class="mt-6 p-4 rounded-2xl bg-black border border-emerald-950 flex items-start gap-3">
+            <span class="text-xl">💡</span>
+            <div>
+              <h5 class="font-bold text-xs text-emerald-400 uppercase tracking-wide">Storage & Freshness Tip</h5>
+              <p id="modal-storage" class="text-xs text-slate-300 mt-0.5">Keep stored in a cool ventilated place.</p>
+            </div>
+          </div>
+
+          <div id="modal-action-area" class="mt-8"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. RETAIL CHECKOUT & WHATSAPP GENERATOR MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 modal-backdrop">
+    <div class="bg-[#111513] text-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative max-h-[92vh] flex flex-col border border-[#1f2a24]">
+      
+      <div class="p-6 border-b border-[#1f2a24] bg-black text-white flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-bold flex items-center gap-2">
+            <span>📲</span> WhatsApp Order Checkout
+          </h3>
+          <p class="text-xs text-emerald-400 mt-0.5">Finalize customer details to generate your direct WhatsApp order</p>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-[#1b221e] hover:bg-emerald-900 flex items-center justify-center text-white transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="overflow-y-auto p-6 sm:p-8 space-y-6">
+        <form id="checkout-form" class="space-y-4">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Full Name *
+              </label>
+              <input 
+                type="text" 
+                name="customer_name" 
+                required 
+                placeholder="e.g. Mrs. Funke Adeleke" 
+                class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Phone / WhatsApp Number *
+              </label>
+              <input 
+                type="tel" 
+                name="customer_phone" 
+                required 
+                placeholder="e.g. 08012345678" 
+                class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:outline-hidden"
+              />
+            </div>
+          </div>
+
+          <div id="address-field-container">
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+              Delivery Address & Landmark *
+            </label>
+            <input 
+              type="text" 
+              name="customer_address" 
+              placeholder="e.g. Plot 14, Admiralty Way, Lekki Phase 1, Lagos" 
+              class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:outline-hidden"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Preferred Delivery / Pickup Date
+              </label>
+              <input 
+                type="text" 
+                name="delivery_date" 
+                placeholder="e.g. Tomorrow morning (9 AM - 12 PM)" 
+                class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Special Packaging Notes (Optional)
+              </label>
+              <input 
+                type="text" 
+                name="customer_notes" 
+                placeholder="e.g. Trim ugu stalks, select extra ripe avocados" 
+                class="w-full bg-black border border-[#1f2a24] text-white rounded-xl px-4 py-3 text-sm focus:border-emerald-500 focus:outline-hidden"
+              />
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button 
+              type="submit" 
+              class="w-full py-4 rounded-2xl whatsapp-btn text-white font-black text-base shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
+            >
+              <span>Send Order to Atalanta via WhatsApp 📲</span>
+            </button>
+            <p class="text-xs text-slate-400 text-center mt-2">
+              Opens WhatsApp directly with your itemized produce order pre-filled.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 12. ORDER SUCCESS MODAL -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 modal-backdrop">
+    <div class="bg-[#111513] text-white w-full max-w-md rounded-3xl p-8 text-center shadow-2xl relative border border-emerald-500">
+      <div class="w-20 h-20 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500 text-4xl flex items-center justify-center mx-auto mb-4 animate-bounce">
+        ✅
+      </div>
+      <h3 class="text-2xl font-black text-white font-serif-farm">Order Sent to WhatsApp!</h3>
+      <p class="text-sm text-slate-300 mt-2">
+        Thank you, <strong id="success-customer-name" class="text-emerald-400">Valued Customer</strong>! Your produce order has been routed to Atalanta's WhatsApp sales team.
+      </p>
+      <div class="mt-4 p-4 rounded-2xl bg-black border border-emerald-950 text-xs text-emerald-300 text-left">
+        <strong class="text-emerald-400">What happens next?</strong><br>
+        1. Our sales manager confirms produce availability.<br>
+        2. Payment details are provided.<br>
+        3. Fresh produce is packed and dispatched for delivery!
+      </div>
+      <button onclick="closeSuccessModal()" class="mt-6 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-sm transition cursor-pointer">
+        Return to Produce Catalogue
+      </button>
+    </div>
+  </div>
+
+  <!-- App Script -->
+  <script src="js/app.js?v=2.2"></script>
+</body>
+</html>

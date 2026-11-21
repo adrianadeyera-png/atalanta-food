@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap');
+
+:root {
+  --brand-black: #080a09;
+  --brand-black-soft: #111513;
+  --brand-black-card: #141a16;
+  --brand-border: #1f2a24;
+  --brand-green-primary: #10b981;
+
+  --brand-green-bright: #00e676;
+  --brand-green-dark: #064e3b;
+  --brand-green-glow: rgba(16, 185, 129, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  background-color: #080a09;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.font-serif-farm {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ====================================================
+   LOGO STYLING - PRECISE, CLEAN & CONTROLLED
+   ==================================================== */
+.navbar-logo-box {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  max-width: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #000000;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar-logo-box:hover {
+  transform: scale(1.05);
+  border-color: #00e676;
+}
+
+.navbar-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 11px;
+  display: block;
+}
+
+.footer-logo-box {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  max-width: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #000000;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  flex-shrink: 0;
+}
+
+.footer-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 11px;
+  display: block;
+}
+
+.pill-logo-img {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 1px solid #10b981;
+  flex-shrink: 0;
+}
+
+/* Custom Scrollbar - Sleek Dark & Green */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080a09;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2a24;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* ====================================================
+   HERO BACKGROUND VIDEO STYLING
+   ==================================================== */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(0.55) contrast(1.15) saturate(1.2);
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(8, 10, 9, 0.95) 0%, 
+    rgba(6, 78, 59, 0.65) 50%, 
+    rgba(0, 0, 0, 0.96) 100%);
+  z-index: 2;
+  backdrop-filter: blur(1.5px);
+}
+
+/* ====================================================
+   PRODUCE CARD STYLING (BLACK & GREEN)
+   ==================================================== */
+.produce-card {
+  background: #111513;
+  border: 1px solid #1f2a24;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s;
+}
+
+.produce-card:hover {
+  transform: translateY(-4px);
+  border-color: #10b981;
+  box-shadow: 0 16px 30px -6px rgba(16, 185, 129, 0.15), 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Badges */
+.badge-green {
+  background: #10b981;
+  color: #080a09;
+  font-weight: 800;
+}
+
+.badge-black-green {
+  background: #080a09;
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+/* Floating cart animation */
+@keyframes cartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.cart-bump {
+  animation: cartPulse 0.35s ease-in-out;
+}
+
+/* WhatsApp glow */
+.whatsapp-btn {
+  background: #25D366;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #20ba59;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+}
+
+/* Modal transitions */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Checkbox pill tag styling */
+.checkbox-pill input:checked + span {
+  background-color: #10b981 !important;
+  color: #080a09 !important;
+  font-weight: 800 !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Video clip cards */
+.video-card-container {
+  background: #111513;
+  border: 1px solid #1f2a24;
+  transition: border-color 0.3s ease;
+}
+.video-card-container:hover {
+  border-color: #10b981;
+}
+
+/* ====================================================
+   COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+   ==================================================== */
+
+/* 1. Mobile Small (Under 420px: iPhone SE, Small screens) */
+@media (max-width: 420px) {
+  .navbar-logo-box {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    border-radius: 8px;
+  }
+  
+  .navbar-brand-name {
+    font-size: 1rem !important;
+  }
+
+  #nav-cart-btn {
+    padding: 8px 10px !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 1.75rem !important;
+    line-height: 1.18 !important;
+  }
+
+  .hero-subtext-responsive {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .hero-cta-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.625rem !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .hero-cta-group a {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  #cart-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
+
+/* 2. Mobile Standard (Under 640px - iPhone 16, most phones) */
+@media (max-width: 640px) {
+  .navbar-logo-box {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    border-radius: 10px;
+  }
+
+  .hero-section-container {
+    min-height: min(85vh, 580px) !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .hero-subtext-responsive {
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+
+  .hero-cta-group a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  /* Catalogue Grid: 1 column on phone */
+  #products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Wholesale Form: 1 column */
+  .wholesale-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .wholesale-grid-3col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Category pills smooth scroll */
+  .cat-pill-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cat-pill-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Cart Drawer takes full mobile width */
+  #cart-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  /* Modals on mobile */
+  #product-detail-modal > div,
+  #checkout-modal > div {
+    max-height: 94vh !important;
+    width: 95vw !important;
+    margin: 8px !important;
+  }
+}
+
+/* 3. Tablets (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  #products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 2.75rem;
+    line-height: 1.15;
+  }
+
+  .wholesale-grid-2col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .wholesale-grid-3col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 4. Desktop / Large Screens (1025px to 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 3.25rem;
+  }
+}
+
+/* 5. Extra Large Screens (> 1280px) */
+@media (min-width: 1281px) {
+  #products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1.75rem !important;
+  }
+
+  .hero-heading-responsive {
+    font-size: 3.75rem;
+  }
+}
+
+/* Touch Device Ergonomics */
+@media (hover: none) and (pointer: coarse) {
+  button, a, input, select {
+    min-height: 44px;
+  }
+}

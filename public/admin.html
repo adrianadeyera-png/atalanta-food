@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Manager Portal | Atalanta</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            farm: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/jpeg" href="/images/atalanta-logo.jpg">
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+  <!-- 1. LOGIN VIEW -->
+  <div id="login-view" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950">
+    <div class="bg-white w-full max-w-md rounded-3xl p-8 sm:p-10 shadow-2xl border border-slate-100">
+      
+      <div class="text-center mb-8">
+        <div class="navbar-logo-box mx-auto mb-4" style="width: 64px; height: 64px; min-width: 64px; min-height: 64px;">
+          <img src="/images/atalanta-logo.jpg" alt="Atalanta Food" class="navbar-logo-img" onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <h2 class="text-2xl font-black text-slate-900 font-serif-farm">Atalanta Manager Portal</h2>
+        <p class="text-xs text-slate-500 mt-1">Manage produce, update prices & configure WhatsApp receiving line</p>
+      </div>
+
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+            Security Access Key
+          </label>
+          <input 
+            type="password" 
+            id="admin-password-input" 
+            required 
+            placeholder="Enter security access key" 
+            class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+          />
+        </div>
+
+        <div id="login-error" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold"></div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 rounded-2xl bg-emerald-800 hover:bg-emerald-900 text-white font-black text-sm shadow-md transition active:scale-[0.98] cursor-pointer"
+        >
+          Sign In to Manager Portal
+        </button>
+      </form>
+
+      <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+        <a href="/" class="text-xs text-emerald-700 hover:underline font-bold">
+          ← Back to Public Catalogue
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. DASHBOARD VIEW -->
+  <div id="dashboard-view" class="hidden min-h-screen flex flex-col">
+    
+    <!-- Top Navbar -->
+    <header class="bg-emerald-950 text-white sticky top-0 z-30 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+        
+        <div class="flex items-center gap-3">
+          <div class="navbar-logo-box" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px;">
+            <img src="/images/atalanta-logo.jpg" alt="Logo" class="navbar-logo-img">
+          </div>
+          <div>
+            <h1 class="font-black text-lg font-serif-farm leading-tight" id="admin-farm-name">Atalanta</h1>
+            <span class="block text-[11px] text-emerald-300 font-semibold uppercase tracking-wider">Produce Sales & Supply Desk</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="/" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-900/80 hover:bg-emerald-800 border border-emerald-700/60 text-xs font-bold text-white transition flex items-center gap-1.5">
+            <span>View Live Catalogue</span>
+            <span>↗</span>
+          </a>
+          <button onclick="handleLogout()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-rose-900 border border-slate-700 text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer">
+            Logout
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+      
+      <!-- Stats Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 text-2xl flex items-center justify-center">
+            📦
+          </div>
+          <div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Produce</span>
+            <h3 class="text-2xl font-black text-slate-900" id="stat-total">0</h3>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 text-2xl flex items-center justify-center">
+            🟢
+          </div>
+          <div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">In Stock</span>
+            <h3 class="text-2xl font-black text-emerald-700" id="stat-in-stock">0</h3>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 text-2xl flex items-center justify-center">
+            🔴
+          </div>
+          <div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sold Out</span>
+            <h3 class="text-2xl font-black text-rose-700" id="stat-out-stock">0</h3>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-green-100 text-green-700 text-2xl flex items-center justify-center">
+            📲
+          </div>
+          <div class="min-w-0">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Receiving WhatsApp</span>
+            <h4 class="text-sm font-extrabold text-slate-900 truncate" id="active-whatsapp-display">Loading...</h4>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Produce Management Card -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+        
+        <div class="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-slate-900 font-serif-farm">Produce & Live Pricing Desk</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Edit prices, toggle stock availability, or add newly arrived produce</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <input 
+              type="text" 
+              id="admin-search-input" 
+              placeholder="Search produce..." 
+              class="bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+            />
+
+            <select id="admin-filter-category" class="bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-700 cursor-pointer">
+              <option value="all">All Categories</option>
+              <option value="peppers">Peppers</option>
+              <option value="vegetables">Vegetables</option>
+              <option value="tubers">Tubers</option>
+              <option value="grains">Grains</option>
+              <option value="fruits">Fruits</option>
+            </select>
+
+            <button 
+              onclick="openAddProductModal()" 
+              class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition active:scale-95 cursor-pointer"
+            >
+              <span>+ Add New Produce</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">
+                <th class="py-3 px-4">Produce</th>
+                <th class="py-3 px-4">Category</th>
+                <th class="py-3 px-4">Price</th>
+                <th class="py-3 px-4">Unit Description</th>
+                <th class="py-3 px-4">Stock Status</th>
+                <th class="py-3 px-4 text-center">Featured</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Settings & WhatsApp Configuration Card -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xs p-6 sm:p-8">
+        <div class="max-w-3xl">
+          <div class="mb-6">
+            <h2 class="text-xl font-black text-slate-900 font-serif-farm flex items-center gap-2">
+              <span>⚙️</span> Company Settings & WhatsApp Order Line
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">Configure your business WhatsApp receiving line, delivery fees, and company info</p>
+          </div>
+
+          <form id="settings-form" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Company Name
+                </label>
+                <input 
+                  type="text" 
+                  name="farmName" 
+                  required 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  WhatsApp Number * (Receives Orders & Wholesale RFQs)
+                </label>
+                <input 
+                  type="text" 
+                  name="whatsappNumber" 
+                  required 
+                  placeholder="e.g. 2348012345678" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-mono font-bold text-emerald-800 focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+                <p class="text-[11px] text-slate-400 mt-1">Format: Country code without + (e.g. 2348012345678 for Nigeria).</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Currency Symbol
+                </label>
+                <input 
+                  type="text" 
+                  name="currency" 
+                  required 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Standard Delivery Fee
+                </label>
+                <input 
+                  type="number" 
+                  name="deliveryFee" 
+                  required 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Free Delivery Threshold
+                </label>
+                <input 
+                  type="number" 
+                  name="freeDeliveryThreshold" 
+                  required 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Top Announcement Banner
+              </label>
+              <input 
+                type="text" 
+                name="announcement" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Contact Phone
+                </label>
+                <input 
+                  type="text" 
+                  name="contactPhone" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Contact Email
+                </label>
+                <input 
+                  type="email" 
+                  name="contactEmail" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Hub Address / Location
+                </label>
+                <input 
+                  type="text" 
+                  name="address" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Depot Pickup Bay
+                </label>
+                <input 
+                  type="text" 
+                  name="pickupLocation" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 p-4 bg-emerald-50/60 rounded-2xl border border-emerald-200/60 flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Storefront Inventory Visibility</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Automatically hide sold-out produce from customer catalogue (only show items in stock)</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" name="hideOutOfStock" id="settings-hide-out-of-stock" class="sr-only peer">
+                <div class="w-11 h-6 bg-slate-300 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-700"></div>
+              </label>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Change Manager Password (Leave blank to keep current)
+              </label>
+              <input 
+                type="password" 
+                name="newPassword" 
+                placeholder="Enter new manager password" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <button 
+              type="submit" 
+              class="px-6 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-sm shadow-sm transition active:scale-95 cursor-pointer"
+            >
+              Save Company Settings
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- 3. ADD / EDIT PRODUCE MODAL -->
+  <div id="produce-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 modal-backdrop">
+    <div class="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative max-h-[92vh] flex flex-col">
+      
+      <div class="p-6 border-b border-slate-100 bg-emerald-950 text-white flex items-center justify-between">
+        <h3 class="text-lg font-bold font-serif-farm" id="produce-modal-title">Add New Produce</h3>
+        <button onclick="closeProduceModal()" class="w-8 h-8 rounded-full bg-emerald-800 hover:bg-emerald-700 flex items-center justify-center text-white transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="overflow-y-auto p-6 space-y-4">
+        <form id="produce-form" class="space-y-4">
+          <input type="hidden" name="id" id="produce-id-input">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Produce Name *
+              </label>
+              <input 
+                type="text" 
+                name="name" 
+                required 
+                placeholder="e.g. Fresh Ugu Leaves, Benue White Yam" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Category *
+              </label>
+              <select 
+                name="category" 
+                required 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden cursor-pointer"
+              >
+                <option value="peppers">🌶️ Peppers (Habanero / Bell)</option>
+                <option value="vegetables">🥬 Vegetables (Ugu, Tomatoes, Okra, Cucumbers)</option>
+                <option value="tubers">🍠 Tubers (Yam, Cassava, Sweet Potato)</option>
+                <option value="grains">🌽 Grains (Sweet Corn)</option>
+                <option value="fruits">🥑 Fruits (Soursop, Avocado)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Price * (Number only)
+              </label>
+              <input 
+                type="number" 
+                name="price" 
+                required 
+                placeholder="e.g. 4500" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Unit Description *
+              </label>
+              <input 
+                type="text" 
+                name="unit" 
+                required 
+                placeholder="e.g. per basket, per tuber, per bunch" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Stock Status
+              </label>
+              <select 
+                name="stockStatus" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-700 focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden cursor-pointer"
+              >
+                <option value="in_stock">🟢 In Stock</option>
+                <option value="low_stock">🟡 Low Stock</option>
+                <option value="out_of_stock">🔴 Sold Out</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Badge / Tag (Optional)
+              </label>
+              <input 
+                type="text" 
+                name="badge" 
+                placeholder="e.g. Fresh Harvest, Best Seller, Superfood" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                Supply Frequency
+              </label>
+              <input 
+                type="text" 
+                name="harvestSeason" 
+                placeholder="e.g. Daily Dispatch, Sourced Fresh, Morning Picked" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+              />
+            </div>
+          </div>
+
+          <!-- Produce Image Options -->
+          <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50 space-y-3">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Produce Image
+            </label>
+
+            <div class="flex items-center gap-4">
+              <img id="image-preview" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" alt="Preview" class="w-16 h-16 rounded-xl object-cover bg-white border border-slate-200 flex-shrink-0"/>
+              <div class="flex-1">
+                <input 
+                  type="text" 
+                  name="image" 
+                  id="produce-image-input" 
+                  placeholder="Paste Image URL or select preset below" 
+                  class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-100 text-xs font-bold text-slate-700 transition flex items-center gap-1.5">
+                <span>📁 Upload Image from Device</span>
+                <input type="file" id="produce-file-input" accept="image/*" class="hidden">
+              </label>
+              <span id="upload-status-text" class="text-xs text-slate-500"></span>
+            </div>
+
+            <div class="pt-2">
+              <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Or Choose from Curated Produce Presets:</span>
+              <div id="preset-image-picker" class="grid grid-cols-4 sm:grid-cols-6 gap-2"></div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+              Produce Description
+            </label>
+            <textarea 
+              name="description" 
+              rows="3" 
+              placeholder="Fresh characteristics, flavor profile, culinary and catering uses..." 
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+            ></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+              Storage Tip for Buyers
+            </label>
+            <input 
+              type="text" 
+              name="storageTip" 
+              placeholder="e.g. Keep in ventilated crates at 12-15°C for optimal shelf life" 
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-hidden"
+            />
+          </div>
+
+          <div class="flex items-center gap-2 pt-1">
+            <input type="checkbox" name="featured" id="produce-featured-checkbox" class="w-4 h-4 text-emerald-600 rounded-sm focus:ring-emerald-500 accent-emerald-600">
+            <label for="produce-featured-checkbox" class="text-xs font-bold text-slate-700">
+              Feature on Homepage Top Highlights
+            </label>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
+            <button 
+              type="button" 
+              onclick="closeProduceModal()" 
+              class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-bold hover:bg-slate-50 transition cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-6 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold shadow-sm transition active:scale-95 cursor-pointer"
+            >
+              Save Produce
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/admin.js?v=2.1"></script>
+</body>
+</html>
